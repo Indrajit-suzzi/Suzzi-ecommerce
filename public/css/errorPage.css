@@ -1,0 +1,52 @@
+:root {
+    /**
+     * colors
+     */
+    --terracotta: hsl(9, 57%, 55%);;
+    --white: hsl(0, 100%, 100%);
+    --weight-700: 700;
+    --border-radius-md: 10px;
+  }
+  
+
+.page_404 {
+  padding: 40px 0;
+  background: #fff;
+  font-family: "Arvo", serif;
+}
+
+.main-content{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.page_404 img {
+  width: 100%;
+}
+
+.four_zero_four_bg {
+  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+  height: 400px;
+  background-position: center;
+}
+
+.four_zero_four_bg h1 {
+  font-size: 80px;
+  font-weight: var(--weight-700);
+}
+
+.four_zero_four_bg h3 {
+  font-size: 80px;
+}
+
+.link_404 {
+  color: var(--white);
+  padding: 10px 20px;
+  background: var(--terracotta);
+  margin: 20px 0;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: var(--border-radius-md);
+  font-weight: var(--weight-700);
+}
