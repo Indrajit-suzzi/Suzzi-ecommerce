@@ -58,95 +58,9 @@
   padding: 0.5em 0.8em;
 }
 
-.mobile-bottom-navigation {
-  background: var(--white);
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 500px;
-  margin: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-around;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding: 5px 0;
-  -webkit-box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.25);
-  box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.25);
-  z-index: 5;
-}
-
-.action-btn {
-  border: none;
-  background-color: transparent;
-  outline: none;
-  padding: 10px;
-}
-
-.action-btn:hover,
-.action-btn:focus {
-  border: none;
-  outline: none;
-}
-
-.count {
-  position: absolute;
-  top: -2px;
-  right: -3px;
-  background: var(--bittersweet);
-  color: var(--white);
-  font-size: 12px;
-  font-weight: var(--weight-500);
-  line-height: 1;
-  padding: 2px 4px;
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
-}
-
-.mobile-bottom-navigation .action-btn {
-  position: relative;
-  font-size: 26px;
-  color: var(--eerie-black);
-  padding: 10px;
-}
-
-.mobile-bottom-navigation .count {
-  background: var(--bittersweet);
-  color: var(--white);
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 12px;
-  font-weight: var(--weight-500);
-  line-height: 1;
-  padding: 2px 4px;
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
-}
-
-@media (min-width: 1024px) {
-  .action-btn {
-    position: relative;
-    font-size: 35px;
-    color: var(--onyx);
-    padding: 5px;
-  }
-  .mobile-bottom-navigation {
-    display: none;
-  }
-}
 
 @media (max-width: 768px) {
+
   .four_zero_four_bg {
     height: 300px;
   }
@@ -181,11 +95,5 @@
   .link_404 {
     font-size: 1.2em;
     padding: 0.5em 0.8em;
-  }
-  .mobile-bottom-navigation {
-    -webkit-border-top-left-radius: var(--border-radius-md);
-    border-top-left-radius: var(--border-radius-md);
-    -webkit-border-top-right-radius: var(--border-radius-md);
-    border-top-right-radius: var(--border-radius-md);
   }
 }
