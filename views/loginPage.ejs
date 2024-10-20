@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Suzzi eCommerce</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/loginAndSignup.css"/>
+</head>
+<body>
+
+<div class="login-container">
+    <h1>Login to Suzzi</h1>
+
+    <!-- Facebook & Google Buttons -->
+    <button class="btn btn-facebook">Login with Facebook</button>
+    <button class="btn btn-google">Login with Google</button>
+
+    <div class="or-divider">OR</div>
+
+    <!-- Email and Password Login Form -->
+    <form action="/login" method="POST">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter your password">
+        </div>
+        <button type="submit" class="btn btn-login">Login</button>
+    </form>
+
+    <div class="login-links">
+        <p>Don't have an account? <a href="./signup">Sign Up</a></p>
+        <p><a href="#">Forgot your password?</a></p>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
