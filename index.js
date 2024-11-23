@@ -1,36 +1,40 @@
 const express = require("express");
+const mysql = require("mysql2");
+const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
+
+const baseRoutes = require("./routes/baseRoutes"); 
+const loginRoutes = require("./routes/loginRoutes"); 
+
+dotenv.config();
+
 const app = express();
-const path = require("path");
-const port = process.env.port || 3000;
+app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, "public")));
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "/views"));
-
-app.get("/", (req, res) => {
-  res.render("home.ejs");
+// Database connection
+const db = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT,
 });
 
-app.get("/home", (req, res) => {
-  res.render("home.ejs");
+db.connect((err) => {
+    if (err) {
+        console.error("Error connecting to the database:", err);
+        process.exit(1);
+    }
+    console.log("Connected to the MySQL database!");
 });
 
-app.get("/termsandconditions", (req, res) => {
-  res.render("termsAndConditions.ejs");
+// Use the routes
+app.use("/", baseRoutes);
+app.use("/", loginRoutes); 
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
 
-app.get("/account/login", (req, res) => {
-  res.render("loginPage.ejs");
-});
-
-app.get("/account/signup", (req, res) => {
-  res.render("signUp.ejs");
-});
-
-app.use((req, res, next) => {
-  res.status(404).render("errorPage.ejs");
-});
-
-app.listen(port, () => {
-  console.log(`listening on port ${port}`);
-});
+module.exports = db;
