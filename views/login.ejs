@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - Suzzi eCommerce</title>
+    <title>Login - Suzzi eCommerce</title>
     <link rel="shortcut icon" href="/images/logo/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/loginAndSignup.css" />
@@ -14,7 +14,7 @@
 <body>
 
     <div class="form-container">
-        <h1>Create an Account</h1>
+        <h1>Login to Suzzi</h1>
 
         <!-- Facebook & Google Buttons -->
         <div class="social-login">
@@ -24,35 +24,28 @@
 
         <div class="or-divider">OR</div>
 
-        <!-- Sign-Up Form -->
-        <form action="/user/signup" method="POST">
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="e.g. Ankur Kaur" required>
-            </div>
+        <!-- Email and Password Login Form -->
+        <form action="/user/login" method="POST">
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="e.g. example@gmail.com"
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
                     required>
             </div>
             <div class="form-group password-group">
                 <label for="password">Password</label>
                 <div class="password-wrapper">
                     <input type="password" class="form-control" id="password" name="password"
-                        placeholder="Create a password" required>
-                    <i class="fa fa-eye toggle-password" id="toggleSignupPassword"></i>
+                        placeholder="Enter your password" required>
+                    <i class="fa fa-eye toggle-password" id="toggleLoginPassword"></i>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="confirm-password">Confirm Password</label>
-                <input type="password" class="form-control" id="confirm-password" name="confirmPassword"
-                    placeholder="Confirm your password" required>
-            </div>
-            <button type="submit" class="btn btn-submit"><span>Sign Up</span></button>
+            <input type="hidden" name="redirect" value="<%= redirect %>">
+            <button type="submit" class="btn btn-submit"><span>Login</span></button>
         </form>
 
         <div class="form-links">
-            <p>Already have an account? <a href="./login">Login</a></p>
+            <p>Don't have an account? <a href="/user/signup">Sign Up</a></p>
+            <p><a href="#">Forgot your password?</a></p>
         </div>
     </div>
 

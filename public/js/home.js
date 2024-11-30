@@ -12,10 +12,6 @@
 // modalCloseOverlay.addEventListener('click', modalCloseFunc);
 // modalCloseBtn.addEventListener('click', modalCloseFunc);
 
-
-
-
-
 // // notification toast variables
 // // const notificationToast = document.querySelector('[data-toast]');
 // // const toastCloseBtn = document.querySelector('[data-toast-close]');
@@ -24,10 +20,6 @@
 // // toastCloseBtn.addEventListener('click', function () {
 // //   notificationToast.classList.add('closed');
 // // });
-
-
-
-
 
 // // mobile menu variables
 // const mobileMenuOpenBtn = document.querySelectorAll('[data-mobile-menu-open-btn]');
@@ -52,10 +44,6 @@
 //   overlay.addEventListener('click', mobileMenuCloseFunc);
 
 // }
-
-
-
-
 
 // // accordion variables
 // const accordionBtn = document.querySelectorAll('[data-accordion-btn]');
@@ -86,3 +74,22 @@
 //   });
 // }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const profileButton = document.getElementById("profile-button");
+
+  profileButton.addEventListener("click", () => {
+    fetch("/user/status")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.isAuthenticated) {
+          window.location.href = "/user/profile";
+        } else {
+          window.location.href = "/user/login";
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        window.location.href = "/user/login";
+      });
+  });
+});

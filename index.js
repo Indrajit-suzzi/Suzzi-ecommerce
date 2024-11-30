@@ -1,43 +1,40 @@
-const express = require("express");
-const path = require("path");
-const mysql = require("mysql2");
-const bodyParser = require("body-parser");
-const dotenv = require("dotenv");
+import express from "express";
+import path from "path";
+import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+import { fileURLToPath } from "url";
+import connectDB from "./db.js";
+
 dotenv.config();
+// connectDB();
+
 const app = express();
-app.use(bodyParser.json());
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-app.use(express.static(path.join(__dirname, "public")));
+// Middleware
+app.use(express.urlencoded({ extended: true })); // For form data
+app.use(express.json());
+app.use(cookieParser());
+
+// Set view engine and static files
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "/views"));
+app.set("views", path.join(__dirname, "views"));
+app.use(express.static(path.join(__dirname, "public")));
 
-const baseRoutes = require("./routes/baseRoutes");
-const loginRoutes = require("./routes/loginRoutes");
+// Routes
+import baseRoutes from "./routes/baseRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
-// Database connection
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT,
-});
-
-db.connect((err) => {
-  if (err) {
-    console.error("Error connecting to the database:", err);
-    process.exit(1);
-  }
-  console.log("Connected to the MySQL database!");
-});
-
-//routes
 app.use("/", baseRoutes);
-app.use("/", loginRoutes);
+app.use("/user", userRoutes);
+
+
+// app.use((req, res) => {
+//   res.status(404).render("error", { message: "Page not found" });
+// });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
-
-module.exports = db;
