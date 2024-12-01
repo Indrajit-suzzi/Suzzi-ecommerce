@@ -30,9 +30,9 @@ app.use("/", baseRoutes);
 app.use("/user", userRoutes);
 
 
-// app.use((req, res) => {
-//   res.status(404).render("error", { message: "Page not found" });
-// });
+app.use((req, res) => {
+  res.status(404).render("error", { message: "Page not found" });
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
